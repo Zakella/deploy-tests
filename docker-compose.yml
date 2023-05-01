@@ -1,0 +1,14 @@
+
+version: '3.9'
+services:
+  test-deploy:
+    container_name: test-deploy
+    image: zakella/jibtest
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+
+volumes:
+  db:
+    driver: local
