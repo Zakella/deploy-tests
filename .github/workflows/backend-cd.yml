@@ -1,35 +1,3 @@
-  Skip to content
-    Search or jump to…
-    Pull requests
-    Issues
-    Codespaces
-    Marketplace
-    Explore
-    
-    @Zakella
-    Zakella
-    /
-    deploy-tests
-    Public
-    Cannot fork because you own this repository and are not a member of any organizations.
-    Code
-    Issues
-    Pull requests
-    Actions
-    Projects
-    Wiki
-    Security
-    Insights
-    Settings
-    Beta Try the new code view
-    deploy-tests/.github/workflows/backend-cd.yml
-    @Zakella
-    Zakella test 58
-    Latest commit a17b6a3 2 minutes ago
-    History
-    1 contributor
-    115 lines (95 sloc)  2.93 KB
-
 
   name: CD - Deploy Backend
 
