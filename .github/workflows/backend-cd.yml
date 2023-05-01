@@ -1,42 +1,29 @@
-name: CD - Deploy Backend
-
+name: Deploy to VPS
 on:
-  workflow_dispatch:
   push:
     branches:
-      - master
-
-
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:15.1
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: 123
-          POSTGRES_DB: fullstack
-        ports:
-          - 5332:5432
-        options:
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    defaults:
-      run:
-        working-directory: ./backend
-
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: alex-ac/github-action-ssh-docker-compose@master
-        name: Docker-Compose Remote Deployment
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
         with:
-            ssh_host: 45.137.66.185
-            ssh_private_key: ${{ secrets.EXAMPLE_COM_SSH_PRIVATE_KEY }}
-            ssh_user: ${{ secrets.EXAMPLE_COM_SSH_USER }}
-            docker_compose_prefix: example_com
-
-
+          context: .
+          push: true
+          tags: user/repo:latest
+      - name: Install SSH
+        run: sudo apt-get install openssh-client
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /path/to/app
+            docker-compose pull
+            docker-compose up -d
