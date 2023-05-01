@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
+
 @RestController
 @RequestMapping
 public class TestController {
@@ -15,6 +16,6 @@ public class TestController {
 
     @GetMapping
     public String sayHello(){
-        return "test1";
+        return "test4";
     }
 }
