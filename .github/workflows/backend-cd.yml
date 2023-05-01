@@ -48,7 +48,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Deploying app
-        run:  cd tests
+        run: |
+          cd tests
           rm -rf ./deploytest
           mkdir -p deploytest
           cd deploytest
