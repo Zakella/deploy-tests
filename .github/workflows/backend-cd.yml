@@ -30,8 +30,8 @@ jobs:
 #      - name: Build Package Push with Maven
 #        run: mvn -ntp -B verify -Ddocker.image.tag=${{steps.build-number.outputs.BUILD_NUMBER}} jib:build
 
-      - name: Install SSH
-        run: sudo apt-get install openssh-client
+#      - name: Install SSH
+#        run: sudo apt-get install openssh-client
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
         with:
@@ -40,7 +40,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             pwd
-            ll -la
+            la
             cat docker-compose.yaml
             docker compose version
             cd tests/deploytest/
