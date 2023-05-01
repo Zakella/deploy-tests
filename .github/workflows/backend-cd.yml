@@ -39,6 +39,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            docker compose version
             cd tests/deploytest/
             docker-compose pull
             docker-compose up -d
