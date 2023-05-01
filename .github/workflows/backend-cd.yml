@@ -40,24 +40,25 @@ jobs:
 #          cd /home/zakella/tests/deploytest
 #          git init
 #          git remote add origin https://github.com/Zakella/deploy-tests.git
-      - name: Deploy to VPS
+      - name: Connoting to vps ${{ secrets.HOST }}
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: | 
-            cd tests
-            rm -rf ./deploytest
-            mkdir -p deploytest
-            cd deploytest
-            git init
-            git clone https://github.com/Zakella/deploy-tests.git
-            ll
-            cd deploy-tests/
-            docker compose pull
-            docker compose down
-            docker compose up -d
+
+      - name: Deploying app
+        run:  cd tests
+          rm -rf ./deploytest
+          mkdir -p deploytest
+          cd deploytest
+          git init
+          git clone https://github.com/Zakella/deploy-tests.git
+          ll
+          cd deploy-tests/
+          docker compose pull
+          docker compose down
+          docker compose up -d
         
         
         
