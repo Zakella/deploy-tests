@@ -10,11 +10,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - uses: alex-ac/github-action-ssh-docker-compose@master
-        name: Docker-Compose Remote Deployment
+      - name: Deploy to VPS
+      - uses: appleboy/ssh-action@master
         with:
-          ssh_host: 45.137.66.185
-          ssh_private_key: ${{ secrets.EXAMPLE_COM_SSH_PRIVATE_KEY }}
-          ssh_user: ${{ secrets.EXAMPLE_COM_SSH_USER }}
-          docker_compose_prefix: example_com
+          host: 45.137.66.185
+          username: ${{ secrets.EXAMPLE_COM_SSH_USER }}
+          key: ${{ secrets.EXAMPLE_COM_SSH_PRIVATE_KEY }}
+          script: |
+            cd tests/deploytest/
+            docker-compose pull
+            docker-compose up -d
