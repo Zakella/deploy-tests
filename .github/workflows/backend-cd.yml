@@ -14,18 +14,25 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Install SSH
-        run: sudo apt-get install openssh-client
-      - name: Deploy to VPS
-        uses: appleboy/ssh-action@master
+      - uses: alex-ac/github-action-ssh-docker-compose@master
+        name: Docker-Compose Remote Deployment
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd tests/deploytest/
-            docker-compose pull
-            docker-compose up -d
+          ssh_host: {{ secrets.HOST }}
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh_user: ${{ secrets.USERNAME }}
+          docker_compose_prefix: example_com
+
+#      - name: Install SSH
+#        run: sudo apt-get install openssh-client
+#      - name: Deploy to VPS
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USERNAME }}
+#          key: ${{ secrets.SSH_PRIVATE_KEY }}
+#          script: |
+#            cd tests/deploytest/
+#            docker-compose pull
+#            docker-compose up -d
 
 
