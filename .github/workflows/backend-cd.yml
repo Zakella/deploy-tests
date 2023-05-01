@@ -46,11 +46,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            
-            cd /home/zakella/tests/deploytest
-#             docker-compose pull
-#             docker-compose up -d
+          script: |           
             cd /home/zakella/tests/deploytest
             git init
             git remote add origin https://github.com/Zakella/deploy-tests.git
