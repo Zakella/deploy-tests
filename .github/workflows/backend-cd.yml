@@ -13,12 +13,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          path: my-repo
-      - run: |
-          pwd
-          hostname
-
 #      - uses: actions/setup-java@v3
 #        with:
 #          distribution: 'temurin'
@@ -53,16 +47,16 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd my-repo
-            pwd
+            
+            cd /home/zakella/tests/deploytest
 #             docker-compose pull
 #             docker-compose up -d
-#            cd /home/zakella/tests/deploytest
-#            git init
-#            git remote add origin https://github.com/Zakella/deploy-tests.git
-#            git pull
-#            docker-compose pull
-#            docker-compose up -d
+            cd /home/zakella/tests/deploytest
+            git init
+            git remote add origin https://github.com/Zakella/deploy-tests.git
+            git pull
+            docker-compose pull
+            docker-compose up -d
 
         
         
