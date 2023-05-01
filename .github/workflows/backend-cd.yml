@@ -37,7 +37,7 @@ jobs:
       - name: Initialize Git repository
         run:
           |
-          cd tests/deploytest/
+          cd tests/deploytest
           git init
           git remote add origin https://github.com/Zakella/deploy-tests.git
       - name: Deploy to VPS
