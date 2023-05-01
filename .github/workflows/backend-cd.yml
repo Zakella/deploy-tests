@@ -50,6 +50,9 @@ jobs:
           script: |
              cd $GITHUB_WORKSPACE
              pwd
+             docker-compose pull
+             docker-compose up -d
+
 #            cd /home/zakella/tests/deploytest
 #            git init
 #            git remote add origin https://github.com/Zakella/deploy-tests.git
