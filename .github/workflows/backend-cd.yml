@@ -48,6 +48,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |           
             cd /home/zakella/tests/deploytest
+            rm -rf ./*
             git init
             git remote add origin https://github.com/Zakella/deploy-tests.git
             git pull
