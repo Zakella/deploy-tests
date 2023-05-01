@@ -52,7 +52,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd $GITHUB_WORKSPACE/my-repo
+            cd my-repo
             pwd
 #             docker-compose pull
 #             docker-compose up -d
