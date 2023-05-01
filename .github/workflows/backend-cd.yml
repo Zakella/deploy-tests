@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
           pwd
+          ll
 #      - uses: actions/setup-java@v3
 #        with:
 #          distribution: 'temurin'
