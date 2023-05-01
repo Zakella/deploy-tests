@@ -3,7 +3,7 @@ version: '3.3'
 services:
   test-deploy:
     container_name: test-deploy
-    image: zakella/jibtest
+    image: zakella/jibtest:latest
     ports:
       - "8080:8080"
     restart: unless-stopped
