@@ -1,20 +1,20 @@
-name: Deploy to VPS
+name: CD - Deploy Backend
+
 on:
+  workflow_dispatch:
   push:
     branches:
-      - main
+      - master
+
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: user/repo:latest
+      - uses: actions/checkout@v3
+
       - name: Install SSH
         run: sudo apt-get install openssh-client
       - name: Deploy to VPS
@@ -24,6 +24,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /path/to/app
+            cd tests/deploytest/
             docker-compose pull
             docker-compose up -d
+
+
