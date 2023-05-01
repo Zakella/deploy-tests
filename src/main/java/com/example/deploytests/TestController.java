@@ -1,7 +1,5 @@
 package com.example.deploytests;
 
-
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +11,6 @@ public class TestController {
 
     @GetMapping
     public String sayHello(){
-        return "test6";
+        return "test7";
     }
 }
